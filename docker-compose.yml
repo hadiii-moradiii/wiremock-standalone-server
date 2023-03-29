@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  eb-mock-server:
+    image: mock-server:BUILD_NUMBER
+    container_name: mock-server
+    ports:
+      - 3456:3456
+      - 3457:8000
+    tty: true
+    build: .
+    restart: always
+    networks:
+      - my-app
+networks:
+  my-app:
+    name: my_network
+    external: true
